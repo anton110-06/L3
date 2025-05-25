@@ -1,0 +1,9 @@
+ROM python:3.6
+
+WORKDIR /app
+
+COPY sum_service.py .
+
+RUN pip install flask
+
+CMD ["python", "sum_service.py"]
