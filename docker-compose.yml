@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  greeting-service:
+    build: ./greeting-serves
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./greeting-serves:/app
+
+  sum-service:
+    build: .
+    ports:
+      - "5001:5000"
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - .:/app
+    depends_on:
+      - greeting-service
